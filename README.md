@@ -11,12 +11,5 @@ EduNinja is an educational platform designed to make learning engaging and inter
 
 ## Live Demo
 
-You can access the live demo of EduNinja at [EduNinja Live Demo](https://kkeshavv.github.io/codeBuddies/index.html).
+You can access the live demo of EduNinja at [EduNinja Live Demo]([https://kkeshavv.github.io/codeBuddies/index.html](https://arsalan0786.github.io/Edu-Ninja/)).
 
-## Installation
-
-To run EduNinja locally, follow these steps:
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://kkeshavv.github.io/codeBuddies/index.html
