@@ -11,5 +11,5 @@ EduNinja is an educational platform designed to make learning engaging and inter
 
 ## Live Demo
 
-You can access the live demo of EduNinja at [EduNinja Live Demo]([https://kkeshavv.github.io/codeBuddies/index.html](https://arsalan0786.github.io/Edu-Ninja/)).
+You can access the live demo of EduNinja at [EduNinja Live Demo](https://arsalan0786.github.io/Edu-Ninja/)
 
