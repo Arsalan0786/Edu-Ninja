@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Roots Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .equation {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .equation input {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        .equation button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .equation button:hover {
+            background: #45a049;
+        }
+        .feedback {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 1em;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quadratic Roots Game</h1>
+    <div class="container" id="equation-container"></div>
+
+    <script>
+        const equations = [
+            { equation: "x^2 - 5x + 6 = 0", roots: ["2", "3"] },
+            { equation: "x^2 + 4x - 5 = 0", roots: ["1", "-5"] },
+            { equation: "x^2 - 3x - 10 = 0", roots: ["5", "-2"] },
+            { equation: "x^2 + 2x - 15 = 0", roots: ["3", "-5"] },
+            { equation: "x^2 - x - 12 = 0", roots: ["4", "-3"] }
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function generateGame() {
+            shuffle(equations);
+            const equationContainer = document.getElementById('equation-container');
+            equationContainer.innerHTML = '';
+
+            equations.forEach((item, index) => {
+                equationContainer.innerHTML += `
+                    <div class="equation">
+                        <span>${item.equation}</span>
+                        <input type="text" id="root1-${index}" placeholder="Root 1">
+                        <input type="text" id="root2-${index}" placeholder="Root 2">
+                        <button onclick="checkAnswer(${index})">Submit</button>
+                        <div id="feedback-${index}" class="feedback"></div>
+                    </div>
+                `;
+            });
+        }
+
+        function checkAnswer(index) {
+            const root1 = document.getElementById(`root1-${index}`).value.trim();
+            const root2 = document.getElementById(`root2-${index}`).value.trim();
+            const correctRoots = equations[index].roots;
+            const feedback = document.getElementById(`feedback-${index}`);
+
+            if ((root1 === correctRoots[0] && root2 === correctRoots[1]) ||
+                (root1 === correctRoots[1] && root2 === correctRoots[0])) {
+                feedback.innerHTML = "Correct! 🎉";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerHTML = "Try Again! ❌";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        window.onload = generateGame;
+    </script>
+</body>
+</html>

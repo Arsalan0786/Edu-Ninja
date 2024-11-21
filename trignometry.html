@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle Tango</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        #game-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        #game-board {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #triangle-canvas {
+            border: 2px solid #00796b;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        #angle-inputs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            color: #00796b;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+            width: 60%;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        #calculate-btn, #new-triangle-btn, #check-answer-btn {
+            padding: 10px 20px;
+            background-color: #00796b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #calculate-btn:hover, #new-triangle-btn:hover, #check-answer-btn:hover {
+            background-color: #004d40;
+        }
+
+        #result-container {
+            padding: 20px;
+            background-color: #c8e6c9;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #result-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #004d40;
+        }
+
+        #trigonometry-formulas {
+            padding: 20px;
+            background-color: #c8e6c9;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #game-options {
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Triangle Tango</h1>
+        <div id="game-board">
+            <canvas id="triangle-canvas" width="400" height="400"></canvas>
+            <div id="angle-inputs">
+                <label for="angle-a">Angle A:</label>
+                <input id="angle-a" type="number" value="30">
+                <label for="angle-b">Angle B:</label>
+                <input id="angle-b" type="number" value="60">
+            </div>
+            <button id="calculate-btn">Calculate</button>
+            <div id="result-container">
+                <p id="result-text"></p>
+            </div>
+            <div id="trigonometry-formulas">
+                <h2>Trigonometry Formulas:</h2>
+                <p>Sine: sin(A) = opposite side / hypotenuse</p>
+                <p>Cosine: cos(A) = adjacent side / hypotenuse</p>
+                <p>Tangent: tan(A) = opposite side / adjacent side</p>
+            </div>
+            <div id="game-options">
+                <button id="new-triangle-btn">New Triangle</button>
+                <button id="check-answer-btn">Check Answer</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('triangle-canvas');
+        const ctx = canvas.getContext('2d');
+        const angleAInput = document.getElementById('angle-a');
+        const angleBInput = document.getElementById('angle-b');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const resultText = document.getElementById('result-text');
+        const newTriangleBtn = document.getElementById('new-triangle-btn');
+        const checkAnswerBtn = document.getElementById('check-answer-btn');
+
+        function calculateTriangle(angleA, angleB) {
+            const angleC = 180 - (angleA + angleB);
+            return {
+                angleA,
+                angleB,
+                angleC
+            };
+        }
+
+        function drawTriangle(triangle) {
+            const { angleA, angleB, angleC } = triangle;
+
+            const sideA = 150;
+            const sideB = sideA * Math.tan(angleB * Math.PI / 180);
+            const hypotenuse = Math.sqrt(sideA * sideA + sideB * sideB);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            ctx.moveTo(50, 350);
+            ctx.lineTo(50 + sideA, 350);
+            ctx.lineTo(50 + sideA, 350 - sideB);
+            ctx.closePath();
+
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#00796b';
+            ctx.stroke();
+            ctx.fillStyle = '#004d40';
+            ctx.font = '16px Arial';
+            ctx.fillText(`A: ${angleA}°`, 60, 370);
+            ctx.fillText(`B: ${angleB}°`, 60 + sideA / 2, 370 - 10);
+            ctx.fillText(`C: ${angleC}°`, 60 + sideA / 2, 350 - sideB / 2);
+        }
+
+        function displayResult(triangle) {
+            const { angleA, angleB, angleC } = triangle;
+            resultText.innerHTML = `The third angle of the triangle is ${angleC}°`;
+        }
+
+        calculateBtn.addEventListener('click', () => {
+            const angleA = parseInt(angleAInput.value);
+            const angleB = parseInt(angleBInput.value);
+            const triangle = calculateTriangle(angleA, angleB);
+            drawTriangle(triangle);
+            displayResult(triangle);
+        });
+
+        newTriangleBtn.addEventListener('click', () => {
+            const angleA = Math.floor(Math.random() * 89) + 1;
+            const angleB = Math.floor(Math.random() * (90 - angleA)) + 1;
+            angleAInput.value = angleA;
+            angleBInput.value = angleB;
+            const triangle = calculateTriangle(angleA, angleB);
+            drawTriangle(triangle);
+            displayResult(triangle);
+        });
+
+        checkAnswerBtn.addEventListener('click', () => {
+            const angleA = parseInt(angleAInput.value);
+            const angleB = parseInt(angleBInput.value);
+            const triangle = calculateTriangle(angleA, angleB);
+            displayResult(triangle);
+        });
+
+        window.onload = () => {
+            newTriangleBtn.click();  // Initialize with a random triangle
+        };
+    </script>
+</body>
+</html>

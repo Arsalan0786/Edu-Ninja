@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Math Concepts</title>
+    <link rel="stylesheet" href="games.css"> <!-- Link to CSS file -->
+    <style>
+        /* Inline CSS for the game containers */
+        .game-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between games */
+            justify-content: center; /* Center the games horizontally */
+            margin: 20px; /* Margin for spacing */
+            margin-top: 100px;
+        }
+
+        .game-container {
+            text-align: center; /* Center the game container */
+            flex: 1 1 calc(50% - 20px); /* Flex-grow, flex-shrink, and width for 2 games per row */
+            max-width: calc(50% - 20px); /* Adjust width to fit two games in a row */
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+
+        .game-container iframe {
+            width: 100%;
+            height: 300px; /* Adjust height for the iframe */
+            border: 2px solid #0f5c6e; /* Border color */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .fullscreen-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #0f5c6e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container1">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#quizzes">Quizzes</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#leaderboard">Leaderboard</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="EduNinja Logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Game section -->
+    <div class="game-section">
+        <!-- Game 1 -->
+        <div class="game-container">
+            <h2>Solar System</h2>
+            <iframe src="https://www.solarsystemscope.com/iframe" frameborder="0"></iframe>
+            <button class="fullscreen-button" id="fullscreenButton1">Go Fullscreen</button>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-container">
+            <h2>projectile-motion</h2>
+            <iframe src="https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_en.html" frameborder="0"></iframe>
+            <button class="fullscreen-button" id="fullscreenButton2">Go Fullscreen</button>
+        </div>
+
+        <!-- Placeholder for more games -->
+        <div class="game-container">
+            <h2>Algebra graph</h2>
+            <iframe src="https://www.geogebra.org/material/iframe/id/pscfh6em/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" frameborder="0"></iframe>
+            <button class="fullscreen-button" id="fullscreenButton3">Go Fullscreen</button>
+        </div>
+
+        <div class="game-container">
+            <h2> Composite Area</h2>
+            <iframe src="https://www.geogebra.org/material/iframe/id/bhrsfb9y/width/800/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" frameborder="0"></iframe>
+            <button class="fullscreen-button" id="fullscreenButton4">Go Fullscreen</button>
+        </div>
+        <div class="game-container">
+            <h2>Graphing Lines</h2>
+            <iframe src="https://phet.colorado.edu/sims/html/graphing-lines/latest/graphing-lines_en.html" frameborder="0"></iframe>
+            <button class="fullscreen-button" id="fullscreenButton4">Go Fullscreen</button>
+        </div>
+        <div class="game-container">
+            <h2>Snell's Law</h2>
+            <iframe src="https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_en.html" frameborder="0"></iframe>
+            <button class="fullscreen-button" id="fullscreenButton4">Go Fullscreen</button>
+        </div>
+    </div>
+
+    <script>
+        function setupFullscreen(buttonId) {
+            document.getElementById(buttonId).addEventListener('click', function() {
+                var iframe = this.previousElementSibling;
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { /* Firefox */
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+                    iframe.msRequestFullscreen();
+                }
+            });
+        }
+
+        setupFullscreen('fullscreenButton1');
+        setupFullscreen('fullscreenButton2');
+        setupFullscreen('fullscreenButton3');
+        setupFullscreen('fullscreenButton4');
+    </script>
+</body>
+</html>

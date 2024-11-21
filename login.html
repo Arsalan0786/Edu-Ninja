@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <!-- Hamburger menu button -->
+      <div class="menu-icon" id="menuIcon">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i> <!-- Close icon -->
+      </div>
+      <div class="logo">
+        <a href="index.html">
+          <img src="logo.png" alt="EduNinja Logo">
+        </a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="signup.html" class="btn signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login form wrapper -->
+  <div class="wrapper">
+    <form id="loginForm" action="#">
+      <h2>Login</h2>
+      <div class="input-field">
+        <input type="email" id="username" required>
+        <label>Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="password" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit">Log In</button>
+      <div class="register">
+        <p>Don't have an account? <a href="signup.html">Register</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript to handle hamburger menu toggle
+    document.getElementById("menuIcon").addEventListener("click", function() {
+      const navbar = document.getElementById("navbar");
+      navbar.classList.toggle("show");
+      document.querySelector(".menu-icon .fa-bars").classList.toggle("hidden");
+      document.querySelector(".menu-icon .fa-times").classList.toggle("hidden");
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+      
+      if (username === "" || password === "") {
+        alert("Please fill in all fields.");
+      } else {
+        alert(`Welcome, ${username}!`);
+        // Redirect to dashboard or another page if necessary
+        // window.location.href = "dashboard.html";
+      }
+    });
+  </script>
+</body>
+</html>

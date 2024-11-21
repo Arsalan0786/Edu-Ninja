@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Math Concepts</title>
+    <link rel="stylesheet" href="mathematics.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <header>
+        <div class="container1">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="quiz2.html">Quizzes</a></li>
+                    <li><a href="#topics">Topics</a></li>
+                    <li><a href="#leaderboard">Leaderboard</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="EduNinja Logo">
+                </a>
+            </div>
+        </div>
+    </header>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra video resources</title>
+    <style>
+        /* General body styles */
+
+        /* Title style */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom:60px;
+            font-family: cursive;
+            margin-top: 120px;
+        }
+
+        /* Container for the cards */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* Gap between cards */
+            max-width: 1200px; /* Maximum width for the container */
+            margin: 0 auto; /* Center the container */
+        }
+
+        /* Style for each card */
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for effect */
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Card hover effect */
+        .card:hover {
+            transform: translateY(-10px); /* Lifts the card slightly on hover */
+        }
+
+        /* Title inside each card */
+        .card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Image inside each card */
+        .card img {
+            
+            width: 350px;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+
+        /* Button at the bottom of each card */
+        .play-btn {
+            padding: 10px 20px;
+            background-color: #007bff; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Button hover effect */
+        .play-btn:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+
+        /* Hide video by default */
+        .video-container {
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Math Concepts</h1>
+
+    <div class="container">
+        <!-- Card 1: Algebra -->
+        <div class="card">
+            <img src="linearEquations.jpg" alt="Algebra">
+            <h3>Algebra</h3>
+            <p>Learn algebraic expressions, equations, and more.</p>
+            <button class="play-btn" onclick="playVideo(this, 'video1')">Play</button>
+            <div class="video-container" id="video1">
+                <iframe width="300" height="180" src="https://www.youtube.com/embed/tHm3X_Ta_iE?si=OGj5b3hygeffvZOl" 
+                title="Algebra Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Card 2: Geometry -->
+        <div class="card">
+            <img src="Lines-and-Angles.jpg" alt="Geometry">
+            <h3>Geometry</h3>
+            <p>Explore shapes, angles, and geometric relationships.</p>
+            <button class="play-btn" onclick="playVideo(this, 'video2')">Play</button>
+            <div class="video-container" id="video2">
+                <iframe width="300" height="180" src="https://www.youtube.com/embed/atkGovo6CtM?si=QCgiOvdMWc-q_jI5" 
+                title="Geometry Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Card 3: Trigonometry -->
+        <div class="card">
+            <img src="trigonometry.jpg" alt="Trigonometry">
+            <h3>Trigonometry</h3>
+            <p>Understand sine, cosine, and other trigonometric concepts.</p>
+            <button class="play-btn" onclick="playVideo(this, 'video3')">Play</button>
+            <div class="video-container" id="video3">
+                <iframe width="300" height="180" src="https://www.youtube.com/embed/-7Y13YIkPSo?si=ZoOfcgu80iitoqDB" 
+                title="Trigonometry Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Card 4: Calculus -->
+        <div class="card">
+            <img src="calculus.png" alt="Calculus">
+            <h3>Calculus</h3>
+            <p>Dive into derivatives, integrals, and advanced calculus topics.</p>
+            <button class="play-btn" onclick="playVideo(this, 'video4')">Play</button>
+            <div class="video-container" id="video4">
+                <iframe width="300" height="180" src="https://www.youtube.com/embed/vlDzYIIOYmM" 
+                title="Calculus Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Card 5: Statistics -->
+        <div class="card">
+            <img src="statistics.jpg" alt="Statistics">
+            <h3>Statistics</h3>
+            <p>Explore data analysis, probability, and more.</p>
+            <button class="play-btn" onclick="playVideo(this, 'video5')">Play</button>
+            <div class="video-container" id="video5">
+                <iframe width="300" height="180" src="https://www.youtube.com/embed/vlDzYIIOYmM" 
+                title="Statistics Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Card 6: Probability -->
+        <div class="card">
+            <img src="probability.png" alt="Probability">
+            <h3>Probability</h3>
+            <p>Learn about probability theory and applications.</p>
+            <button class="play-btn" onclick="playVideo(this, 'video6')">Play</button>
+            <div class="video-container" id="video6">
+                <iframe width="300" height="180" src="https://www.youtube.com/embed/vlDzYIIOYmM" 
+                title="Probability Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function playVideo(button, videoId) {
+            const video = document.getElementById(videoId);
+            if (video.style.display === "none" || video.style.display === "") {
+                video.style.display = "block";  // Show the video
+                button.textContent = "Hide Video"; // Change button text
+            } else {
+                video.style.display = "none"; // Hide the video
+                button.textContent = "Play"; // Change back to Play
+            }
+        }
+    </script>
+
+</body>
+</html>
+</body>
+</html>

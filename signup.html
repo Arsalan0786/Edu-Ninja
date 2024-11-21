@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <!-- Hamburger menu button -->
+      <div class="menu-icon" id="menuIcon">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i> <!-- Close icon -->
+      </div>
+      <div class="logo">
+        <a href="index.html">
+          <img src="logo.png" alt="EduNinja Logo">
+        </a>
+      </div>
+      <nav class="navbar" id="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn login"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="signup.html" class="btn signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </div>
+    </div>
+  </header>
+  <div class="wrapper">
+    <form id="signupForm" action="#">
+      <h2>Sign Up</h2>
+      <div class="input-field">
+        <input type="text" id="name" required>
+        <label for="name">Enter your name</label>
+      </div>
+      <div class="input-field">
+        <input type="email" id="email" required>
+        <label for="email">Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="password" required>
+        <label for="password">Enter your password</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="confirmPassword" required>
+        <label for="confirmPassword">Confirm your password</label>
+      </div>
+      <div class="input-field">
+        <input type="number" id="age" min="0" max="120" required>
+        <label for="age">Enter your age</label>
+      </div>
+      <button type="submit">Sign Up</button>
+      <div class="register">
+        <p>Already have an account? <a href="login.html">Log In</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+      } else {
+        alert("Sign up successful!");
+        // Redirect to login page if necessary
+        // window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html>
